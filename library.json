@@ -1,0 +1,32 @@
+{
+    "name": "SmarTC_MQTT",
+    "version": "1.0.0",
+    "keywords": "mqtt, arduino",
+    "description": "Arduino MQTT library wrapper SmarTC Home automation",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Cognitician/SmarTC_MQTT.git"
+    },
+    "authors": [
+        {
+            "name": "Clément TOCHE",
+            "email": "ad@toche.fr",
+            "maintainer": true
+        }
+    ],
+    "license": "GPL-3.0-only",
+    "export":{
+        "include":
+        [
+            "src/*",
+            "include/*"
+        ]
+    },
+    "frameworks":"Arduino",
+    "platforms":[
+        "Atmel AVR",
+        "Espressif 32",
+        "Espressif 8266"
+    ],
+    "dependencies":{ }
+}
