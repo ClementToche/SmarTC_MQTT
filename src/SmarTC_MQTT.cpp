@@ -49,6 +49,11 @@ bool SmarTC_MQTT::start()
         {
             Serial.println(F("connected"));
             ret = true;
+
+            // Notify watchers of the connection
+            char topic[100] = {0};
+            sprintf(topic, "/smartc/home/%s/connection", i_name);
+            i_mqtt.publish(topic, "connected");
         }
         else
         {
@@ -70,4 +75,12 @@ bool SmarTC_MQTT::loop()
         start();
 
     return true;
+}
+
+bool SmarTC_MQTT::pirSense()
+{
+    char topic[100] = {0};
+
+    sprintf(topic, "/smartc/home/%s/sensor/pir", i_name);
+    return i_mqtt.publish(topic, "movement");
 }
