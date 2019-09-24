@@ -14,6 +14,7 @@ public:
     bool loop();
 
     bool pirSense();
+    bool uvSense(uint16_t val);
 
 private:
     char *i_user;

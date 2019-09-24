@@ -84,3 +84,11 @@ bool SmarTC_MQTT::pirSense()
     sprintf(topic, "/smartc/home/%s/sensor/pir", i_name);
     return i_mqtt.publish(topic, "movement");
 }
+
+bool SmarTC_MQTT::uvSense(uint16_t val)
+{
+    char topic[100] = {0};
+
+    sprintf(topic, "/smartc/home/%s/sensor/uv", i_name);
+    return i_mqtt.publish(topic, String(val).c_str());
+}
