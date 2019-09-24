@@ -13,6 +13,8 @@ public:
     bool start();
     bool loop();
 
+    bool pirSense();
+
 private:
     char *i_user;
     char *i_pwd;
