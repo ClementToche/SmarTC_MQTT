@@ -2,7 +2,7 @@
     "name": "SmarTC_MQTT",
     "version": "1.0.0",
     "keywords": "mqtt, arduino",
-    "description": "Arduino MQTT library wrapper SmarTC Home automation",
+    "description": "Arduino MQTT library wrapper for SmarTC Home automation",
     "repository": {
         "type": "git",
         "url": "https://github.com/Cognitician/SmarTC_MQTT.git"
