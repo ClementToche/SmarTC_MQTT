@@ -31,6 +31,8 @@ bool SmarTC_MQTT::init(char *user, char *pwd, char *srv, int port, char *name)
     i_name = name;
     i_id = String(RANDOM_REG32, HEX);
 
+    //TODO: Write certs to set secure cnx
+    i_wClient.setInsecure();
     i_mqtt = PubSubClient(i_wClient);
     i_mqtt.setServer(i_srv, i_port);
 
