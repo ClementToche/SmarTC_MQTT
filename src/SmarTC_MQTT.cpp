@@ -46,7 +46,7 @@ bool SmarTC_MQTT::start()
     byte count = 0;
     while (!i_mqtt.connected() && ++count < 5)
     {
-        Serial.print(F("Attempting MQTT connection..."));
+        Serial.printf("Attempting MQTT connection with ID %s...\n", i_id.c_str());
         if (i_mqtt.connect(i_id.c_str(), i_user, i_pwd))
         {
             Serial.println(F("connected"));
@@ -81,16 +81,30 @@ bool SmarTC_MQTT::loop()
 
 bool SmarTC_MQTT::pirSense()
 {
+    bool ret;
     char topic[100] = {0};
 
     sprintf(topic, "/smartc/home/%s/sensor/pir", i_name);
-    return i_mqtt.publish(topic, "movement");
+    ret = i_mqtt.publish(topic, "movement");
+    if (!ret)
+        Serial.printf("Error publishing \"movement\" on %s\n", topic);
+    else
+        Serial.printf("Success publishing \"movement\" on %s\n", topic);
+
+    return ret;
 }
 
 bool SmarTC_MQTT::uvSense(uint16_t val)
 {
+    bool ret;
     char topic[100] = {0};
 
     sprintf(topic, "/smartc/home/%s/sensor/uv", i_name);
-    return i_mqtt.publish(topic, String(val).c_str());
+    ret = i_mqtt.publish(topic, String(val).c_str());
+    if (!ret)
+        Serial.printf("Error publishing \"%s\" on %s\n", String(val).c_str(), topic);
+    else
+        Serial.printf("Success publishing \"%s\" on %s\n", String(val).c_str(), topic);
+    
+    return ret;
 }
