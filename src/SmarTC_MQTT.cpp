@@ -108,3 +108,25 @@ bool SmarTC_MQTT::uvSense(uint16_t val)
     
     return ret;
 }
+
+bool SmarTC_MQTT::lightSense(uint16_t visible, uint16_t ir)
+{
+    bool ret;
+    char topic[100] = {0};
+
+    sprintf(topic, "/smartc/home/%s/sensor/visible", i_name);
+    ret = i_mqtt.publish(topic, String(visible).c_str());
+    if (!ret)
+        Serial.printf("Error publishing \"%s\" on %s\n", String(visible).c_str(), topic);
+    else
+        Serial.printf("Success publishing \"%s\" on %s\n", String(visible).c_str(), topic);
+    
+    sprintf(topic, "/smartc/home/%s/sensor/ir", i_name);
+    ret = i_mqtt.publish(topic, String(ir).c_str());
+    if (!ret)
+        Serial.printf("Error publishing \"%s\" on %s\n", String(ir).c_str(), topic);
+    else
+        Serial.printf("Success publishing \"%s\" on %s\n", String(ir).c_str(), topic);
+    
+    return ret;
+}

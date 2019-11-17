@@ -13,8 +13,9 @@ public:
     bool start();
     bool loop();
 
-    bool pirSense();
-    bool uvSense(uint16_t val);
+    bool lightSense ( uint16_t visible, uint16_t ir );
+    bool pirSense   ( void );
+    bool uvSense    ( uint16_t val );
 
 private:
     char *i_user;
